@@ -1,0 +1,8 @@
+*:focus {
+  outline: gray dashed;
+}
+
+.swiper-slide {
+  min-width: 100px;
+  min-height: 100px;
+}

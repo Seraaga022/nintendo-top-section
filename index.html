@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nintendo</title>
+    <!-- TAILWIND CDN START -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- TAILWIND CONFIG -->
+    <script>
+      tailwind.config = {
+        theme: {
+          screens: {
+            // nav change background limit
+            "nv-ch-bg-lmt": { max: "1179px" },
+            // nav hide devide
+            "nv-hd-dvd": "1179px",
+            sm: "640px",
+            md: "768px",
+            lg: "1024px",
+            xl: "1280px",
+            "2xl": "1536px",
+            "max-2xl": { max: "1535px" },
+            "max-xl": { max: "1279px" },
+            "max-lg": { max: "1023px" },
+            "max-md": { max: "767px" },
+            "max-sm": { max: "639px" },
+          },
+        },
+      };
+    </script>
+    <!-- FONTAWESOME CDN -->
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.2/css/all.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.2/css/sharp-thin.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.2/css/sharp-solid.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.2/css/sharp-regular.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.2/css/sharp-light.css"
+    />
+    <!-- MAIN CSS FILE -->
+    <link rel="stylesheet" href="assets/style/style.css" />
+    <!-- SWIPER.JS CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- MODULES SCRIPT -->
+    <script type="module">
+      import Swiper from "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs";
+    </script>
+    <script src="assets/js/gameSwiper.js"></script>
+  </head>
+  <body>
+    <div class="page__container">
+      <div class="top__container">
+        <div class="_inner_">
+          <nav
+            class="_nav-bar_ flex justify-start items-center nv-ch-bg-lmt:bg-[#e60012] border-b-[1px] border-[#dadada]"
+          >
+            <div class="_left_ flex">
+              <div class="_logo_ bg-[#e60012] h-full w-full">
+                <div class="_inner_ h-full w-full py-[11px] px-[12px]">
+                  <img
+                    src="img/logo.svg.png"
+                    class="w-[80px] h-[28px]"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div
+                class="_search_container_ relative z-[2] ml-4 nv-ch-bg-lmt:hidden"
+              >
+                <div
+                  class="_search-inner_ h-[80%] flex justify-center items-center border-[#484848] border-b-[1px] pt-2 delay-100 duration-200"
+                >
+                  <div
+                    onmouseenter="searchHoverOverHandler()"
+                    onmouseleave="searchHoverOutHandler()"
+                    class="_icon__container group/icon peer/icon h-full flex justify-center items-center"
+                  >
+                    <div
+                      class="_inner_ h-full flex justify-center items-center"
+                    >
+                      <i
+                        class="_magnifying-glass_icon_ fa-solid fa-magnifying-glass text-[#484848] group-hover/icon:text-[#e60012] cursor-pointer delay-100 duration-200"
+                      ></i>
+                    </div>
+                  </div>
+                  <div
+                    onmouseenter="searchHoverOverHandler('searchInpIsHovering')"
+                    onmouseleave="searchHoverOutHandler('searchInpIsHovering')"
+                    class="_search-bar__container h-full mb-2 w-[300px] group/searchInp peer-hover/icon:placeholder:text-[#e60012]"
+                  >
+                    <div class="_inner_ h-full">
+                      <input
+                        class="_search-input_ pl-2 placeholder:text-[15px] placeholder:text-[#484848] placeholder:opacity-70 w-full h-full cursor-pointer outline-none group-hover/searchInp:placeholder:text-[#e60012] delay-100 duration-200"
+                        type="text"
+                        placeholder="Search"
+                        onclick="searchDropDownHandler('Search games, hardware, news, etc')"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    onmouseenter="searchHoverOverHandler()"
+                    onmouseleave="searchHoverOutHandler()"
+                    class="_category-drop-down__container relative group/drpdn h-full mb-2 flex items-center cursor-pointer"
+                    onclick="dropDownHandler()"
+                  >
+                    <button
+                      class="_inner_ _select-value-parent_ min-w-[140px] font-medium text-sm text-[#484848] group-hover/drpdn:text-[#e60012] focus:text-[#e60012] group-hover/drpdn:transition ease-in-out delay-150 duration-200 outline-none select-none"
+                    >
+                      <span class="_select-value_">All categories</span>
+                      <span class="pl-[12px]"
+                        ><i
+                          class="_drop-down-arrow_ fa-sharp fa-solid fa-chevron-down duration-200"
+                        ></i
+                      ></span>
+                    </button>
+                    <div
+                      class="_drop-down__container z-[999999] absolute top-8 left-0 hidden border-[silver] border-[1px] rounded-[15px] bg-white min-w-[140px] py-[4px]"
+                    >
+                      <div class="_inner_ text-xs font-semibold text-[#484848]">
+                        <div
+                          onclick="dropDownSelectHandler(event)"
+                          class="_drop-d-item_ select-none p-[4px] pl-2 hover:bg-[#efefef] rounded-t-[8px]"
+                        >
+                          All categories
+                        </div>
+                        <div
+                          onclick="dropDownSelectHandler(event)"
+                          class="_drop-d-item_ select-none p-[4px] pl-2 hover:bg-[#efefef]"
+                        >
+                          Games
+                        </div>
+                        <div
+                          onclick="dropDownSelectHandler(event)"
+                          class="_drop-d-item_ select-none p-[4px] pl-2 hover:bg-[#efefef]"
+                        >
+                          Hardware
+                        </div>
+                        <div
+                          onclick="dropDownSelectHandler(event)"
+                          class="_drop-d-item_ select-none p-[4px] pl-2 hover:bg-[#efefef]"
+                        >
+                          Merchandise
+                        </div>
+                        <div
+                          onclick="dropDownSelectHandler(event)"
+                          class="_drop-d-item_ select-none p-[4px] pl-2 hover:bg-[#efefef]"
+                        >
+                          News & Events
+                        </div>
+                        <div
+                          onclick="dropDownSelectHandler(event)"
+                          class="_drop-d-item_ select-none p-[4px] pl-2 hover:bg-[#efefef] rounded-b-[8px]"
+                        >
+                          Support
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- SearchDropDown -->
+              <div
+                class="_search-drop-down_ z-[1] nv-ch-bg-lmt:hidden -translate-y-[100px] duration-500 hidden absolute min-h-[300px] top-[50px] w-full bg-[#ffffff]"
+              >
+                <div
+                  class="_inner_ flex flex-col 2xl:flex-row pt-[10px] w-full pl-[120px] text-md"
+                >
+                  <div
+                    class="_left_ w-[450px] mb-8 flex flex-col font-semibold"
+                  >
+                    <div class="_title__container mb-2">
+                      <div class="_inner_ text-[#484848]">Trending topics</div>
+                    </div>
+                    <div class="_topics__container">
+                      <div class="_inner_ space-y-[5px] text-[#e60012]">
+                        <div class="_item_ hover:text-[#ac000d] duration-200">
+                          <a href="/mario-red-edition"
+                            >Nintendo Switch™ - OLED Model: Mario Red Edition</a
+                          >
+                        </div>
+                        <div class="_item_ hover:text-[#ac000d] duration-200">
+                          <a href="/switch">Nintendo Switch</a>
+                        </div>
+                        <div class="_item_ hover:text-[#ac000d] duration-200">
+                          <a href="/super-mario-bros-wonder"
+                            >Super Mario Bros. Wonder</a
+                          >
+                        </div>
+                        <div class="_item_ hover:text-[#ac000d] duration-200">
+                          <a href="/switch-games">Nintendo Switch games</a>
+                        </div>
+                        <div class="_item_ hover:text-[#ac000d] duration-200">
+                          <a href="/zelda">Zelda games</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="_right_ w-[770px]">
+                    <div
+                      class="_title__container text-md font-semibold text-[#484848] mb-4"
+                    >
+                      <div class="_inner_">Top store products</div>
+                    </div>
+                    <div class="_games__container">
+                      <div class="_inner_ flex flex-wrap">
+                        <div
+                          class="_card__container group/game-card min-w-[340px] min-h-[80px] max-w-[340px] max-h-[80px] rounded-2xl mr-6 mb-6 border-[1px] border-[#dadada]"
+                        >
+                          <a
+                            href="/switch-oled-white-set"
+                            class="_inner_ flex w-full h-full"
+                          >
+                            <div class="_img__container w-[40%] h-full">
+                              <div
+                                class="_inner_ h-full w-full rounded-l-[15px]"
+                              >
+                                <img
+                                  class="rounded-l-[15px] h-full group-hover/game-card:brightness-[66%] duration-500"
+                                  src="img/top-games/one.avif"
+                                  alt=""
+                                />
+                              </div>
+                            </div>
+                            <div
+                              class="_content__container h-[100%] max-w-[60%] w-[60%] text-sm text-[#484848] font-medium"
+                            >
+                              <div
+                                class="_top__container pt-1 pl-2 h-[55%] group-hover/game-card:text-[#e60012]"
+                              >
+                                <div class="_inner_">
+                                  Nintendo Switch™ - OLED Model White set
+                                </div>
+                              </div>
+                              <div class="_bottom__container pl-2 h-[45%]">
+                                <div
+                                  class="_inner_ h-full w-full flex items-center"
+                                >
+                                  <div class="_left__container w-[80%]">
+                                    <div
+                                      class="_inner_ pl-2 font-normal border-l-[3px] border-[#3946a0]"
+                                    >
+                                      Hardware
+                                    </div>
+                                  </div>
+                                  <div
+                                    class="_right__container group/like w-[20%] text-[#e60012]"
+                                  >
+                                    <div
+                                      class="_inner_ p-1 flex justify-center items-end text-lg"
+                                    >
+                                      <i
+                                        class="group-hover/like:text-sm duration-300 fa-regular fa-heart"
+                                      ></i>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </a>
+                        </div>
+                        <div
+                          class="_card__container group/game-card min-w-[340px] min-h-[80px] max-w-[340px] max-h-[80px] rounded-2xl mr-6 mb-6 border-[1px] border-[#dadada]"
+                        >
+                          <a
+                            href="/luigi-s-mansion"
+                            class="_inner_ flex w-full h-full"
+                          >
+                            <div class="_img__container w-[40%] h-full">
+                              <div
+                                class="_inner_ h-full w-full rounded-l-[15px]"
+                              >
+                                <img
+                                  class="rounded-l-[15px] h-full group-hover/game-card:brightness-[66%] duration-500"
+                                  src="img/top-games/two.avif"
+                                  alt=""
+                                />
+                              </div>
+                            </div>
+                            <div
+                              class="_content__container h-[100%] max-w-[60%] w-[60%] text-sm text-[#484848] font-medium"
+                            >
+                              <div
+                                class="_top__container pt-1 pl-2 h-[55%] group-hover/game-card:text-[#e60012]"
+                              >
+                                <div class="_inner_">Luigi's Mansion™ 2 HD</div>
+                              </div>
+                              <div class="_bottom__container pl-2 h-[45%]">
+                                <div
+                                  class="_inner_ h-full w-full flex items-center"
+                                >
+                                  <div class="_left__container w-[80%]">
+                                    <div
+                                      class="_inner_ pl-2 font-normal border-l-[3px] border-[#e60012]"
+                                    >
+                                      Nintendo Switch
+                                    </div>
+                                  </div>
+                                  <div
+                                    class="_right__container group/like w-[20%] text-[#e60012]"
+                                  >
+                                    <div
+                                      class="_inner_ p-1 flex justify-center items-end text-lg"
+                                    >
+                                      <i
+                                        class="group-hover/like:text-sm duration-300 fa-regular fa-heart"
+                                      ></i>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </a>
+                        </div>
+                        <div
+                          class="_card__container group/game-card min-w-[340px] min-h-[80px] max-w-[340px] max-h-[80px] rounded-2xl mb-6 lg:mb-0 mr-6 border-[1px] border-[#dadada]"
+                        >
+                          <a
+                            href="/zelda-echoes-of-wisdom"
+                            class="_inner_ flex w-full h-full"
+                          >
+                            <div class="_img__container w-[40%] h-full">
+                              <div
+                                class="_inner_ h-full w-full rounded-l-[15px]"
+                              >
+                                <img
+                                  class="rounded-l-[15px] h-full group-hover/game-card:brightness-[66%] duration-500"
+                                  src="img/top-games/three.avif"
+                                  alt=""
+                                />
+                              </div>
+                            </div>
+                            <div
+                              class="_content__container h-[100%] max-w-[60%] w-[60%] text-sm text-[#484848] font-medium"
+                            >
+                              <div
+                                class="_top__container pt-1 pl-2 pr-6 h-[55%] group-hover/game-card:text-[#e60012]"
+                              >
+                                <div class="_inner_">
+                                  The Legend of Zelda™: Echoes of Wisdom
+                                </div>
+                              </div>
+                              <div class="_bottom__container pl-2 h-[45%]">
+                                <div
+                                  class="_inner_ h-full w-full flex items-center"
+                                >
+                                  <div class="_left__container w-[80%]">
+                                    <div
+                                      class="_inner_ pl-2 font-normal border-l-[3px] border-[#e60012]"
+                                    >
+                                      Nintendo Switchs
+                                    </div>
+                                  </div>
+                                  <div
+                                    class="_right__container group/like w-[20%] text-[#e60012]"
+                                  >
+                                    <div
+                                      class="_inner_ p-1 flex justify-center items-end text-lg"
+                                    >
+                                      <i
+                                        class="group-hover/like:text-sm duration-300 fa-regular fa-heart"
+                                      ></i>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </a>
+                        </div>
+                        <div
+                          class="_card__container group/game-card min-w-[340px] min-h-[80px] max-w-[340px] max-h-[80px] rounded-2xl mr-6 border-[1px] border-[#dadada]"
+                        >
+                          <a
+                            href="/championships"
+                            class="_inner_ flex w-full h-full"
+                          >
+                            <div class="_img__container w-[40%] h-full">
+                              <div
+                                class="_inner_ h-full w-full rounded-l-[15px]"
+                              >
+                                <img
+                                  class="rounded-l-[15px] h-full group-hover/game-card:brightness-[66%] duration-500"
+                                  src="img/top-games/four.avif"
+                                  alt=""
+                                />
+                              </div>
+                            </div>
+                            <div
+                              class="_content__container h-[100%] max-w-[60%] w-[60%] text-sm text-[#484848] font-medium"
+                            >
+                              <div
+                                class="_top__container pt-1 pl-2 pr-4 h-[55%] group-hover/game-card:text-[#e60012]"
+                              >
+                                <div class="_inner_ line-clamp-2">
+                                  Nintendo World Championships: NES™ Edition
+                                </div>
+                              </div>
+                              <div class="_bottom__container pl-2 h-[45%]">
+                                <div
+                                  class="_inner_ h-full w-full flex items-center"
+                                >
+                                  <div class="_left__container w-[80%]">
+                                    <div
+                                      class="_inner_ pl-2 font-normal border-l-[3px] border-[#3946a0]"
+                                    >
+                                      Nintendo Switchs
+                                    </div>
+                                  </div>
+                                  <div
+                                    class="_right__container group/like w-[20%] text-[#e60012]"
+                                  >
+                                    <div
+                                      class="_inner_ p-1 flex justify-center items-end text-lg"
+                                    >
+                                      <i
+                                        class="group-hover/like:text-sm duration-300 fa-regular fa-heart"
+                                      ></i>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- right-items -->
+            <div
+              class="_right-items_ ml-auto flex space-x-8 mr-6 font-semibold text-sm text-[#484848]"
+            >
+              <div class="_item__container nv-ch-bg-lmt:hidden">
+                <div
+                  class="_inner_ flex justify-center items-center space-x-2 cursor-pointer hover:text-[#e60012] duration-200"
+                >
+                  <a href="/support"
+                    ><span class="text-lg"
+                      ><i class="fa-solid fa-message-question"></i
+                    ></span>
+                    <span>Support</span>
+                  </a>
+                </div>
+              </div>
+              <div class="_item__container nv-ch-bg-lmt:hidden">
+                <div
+                  class="_inner_ flex justify-center items-center space-x-2 cursor-pointer hover:text-[#e60012] duration-200"
+                >
+                  <a href="wish-list">
+                    <span class="text-lg"
+                      ><i class="fa-solid fa-heart"></i
+                    ></span>
+                    <span>Wish List</span>
+                  </a>
+                </div>
+              </div>
+              <div class="_item__container nv-ch-bg-lmt:hidden">
+                <div
+                  class="_inner_ flex justify-center items-center space-x-2 cursor-pointer hover:text-[#e60012] duration-200"
+                >
+                  <button
+                    class="focus:text-[#e60012] outline-none relative"
+                    onclick="toggleCartDropDown()"
+                  >
+                    <span class="text-lg"
+                      ><i class="fa-solid fa-cart-shopping"></i
+                    ></span>
+                    <span>Cart</span>
+                  </button>
+                  <div
+                    class="_cart-drop-down__container hidden rounded-xl bg-white p-2 absolute top-10 w-[350px] max-w-[350px] max-h-[200px] overflow-y-scroll z-[99999] flex flex-col text-[#424242] duration-500 border-[silver] border-[2px] cursor-default"
+                  >
+                    <div class="_title_ text-xl pl-4 mb-2 flex justify-start">
+                      <span>Cart</span>
+                    </div>
+                    <div class="_cart-dd__inner">
+                      <div class="_cart-item__container"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="_item__container nv-ch-bg-lmt:hidden">
+                <div
+                  class="_inner_ flex justify-center items-center space-x-2 cursor-pointer hover:text-[#e60012] duration-200"
+                >
+                  <a href="log-in">
+                    <span class="text-lg"
+                      ><i class="fa-solid fa-user"></i
+                    ></span>
+                    <span>Log in / Sign up</span>
+                  </a>
+                </div>
+              </div>
+              <div class="_nintendo-store__container hidden nv-ch-bg-lmt:block">
+                <div class="_inner_">
+                  <svg
+                    viewBox="0 0 135 18"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="140"
+                    role="presentation"
+                    alt=""
+                    data-testid="MyNintendoStoreLogoIcon"
+                    size="180"
+                    color="white"
+                  >
+                    <path
+                      d="M76.974 9.947c-.19-.58-.727-1.197-1.672-1.197-.67 0-1.337.342-1.632 1.197h3.304zm1.781.54c0 .641-.42.81-1.25.81h-3.862c.187.86.965 1.313 1.632 1.313.658 0 1.155-.24 1.561-.761l1.553.564c-.505 1.03-1.674 1.854-3.098 1.854-1.956 0-3.44-1.76-3.44-3.6 0-1.78 1.45-3.578 3.422-3.578 2.27 0 3.455 1.996 3.483 3.398zm4.316-3.397c-.713 0-1.35.298-1.738.784h-.02V7.3h-1.904v6.758h1.903v-3.29c0-1.314.692-1.88 1.477-1.88.545 0 1.375.357 1.375 1.686v3.48h1.903V10.43c0-2.273-1.52-3.339-2.996-3.339zM70.409 5.435H68.51v1.863h-1.27v1.593h1.27v5.165h1.9V8.891h1.286V7.298H70.41V5.435h-.001zm29.304 5.246c0-1.001-.773-1.816-1.724-1.816-.95 0-1.723.815-1.723 1.816 0 1.002.773 1.817 1.724 1.817.95 0 1.724-.815 1.724-1.817h-.001zm1.771-.002c0 1.978-1.564 3.588-3.494 3.588-1.931 0-3.494-1.61-3.494-3.588 0-1.98 1.563-3.59 3.494-3.59 1.93 0 3.494 1.612 3.494 3.59zm1.184 3.093l-.147-.518h-.267v.805h.183l-.006-.603.169.603h.132l.168-.603-.006.603h.183v-.805h-.268l-.141.518zM91.96 10.677c0-1.022-.736-1.83-1.732-1.83-.995 0-1.755.822-1.755 1.83s.76 1.829 1.755 1.829c.996 0 1.732-.808 1.732-1.829zm-.01-6.133h1.904v9.515H91.95v-.5h-.032c-.15.231-.854.708-1.753.708-1.877 0-3.458-1.617-3.458-3.59 0-1.973 1.58-3.588 3.458-3.588.9 0 1.602.474 1.753.705h.032v-3.25zM35.933 4.48c-.484 0-1.023.197-1.45 1.202-.292.69-2.296 5.375-2.296 5.375h-.038l-2.298-5.378c-.427-1.002-.994-1.198-1.45-1.198-.661 0-1.276.451-1.276 1.53v8.046h2.042V8.753h.04l1.903 4.464c.33.773.697.902 1.057.902.361 0 .729-.129 1.058-.902l1.903-4.464h.04v5.303h2.042V6.018c0-1.079-.56-1.54-1.277-1.54zm65.714 8.955h.153v.625h.2v-.625h.153v-.18h-.506v.18zm-59.967-1.95L40.086 7.29h-2.128l2.844 6.63c-.182.876-.727 1.218-1.488 1.218h-.279v1.687h.362c1.454 0 2.207-.269 2.66-1.412.112-.28 3.2-8.123 3.2-8.123h-2.143l-1.434 4.194zM17.73 5.156C16.182 2.24 13.406.515 10.203.515c-3.769 0-7.667 2.59-7.667 6.922 0 3.042 2.526 4.287 2.635 4.338a.825.825 0 0 0 1.091-.376l1.445-2.78 1.044 2.113c.144.29.431.472.747.472s.604-.182.747-.472l1.039-2.1 1.413 2.762a.826.826 0 0 0 1.132.362.88.88 0 0 0 .35-1.17l-2.166-4.237a.846.846 0 0 0-.749-.461.835.835 0 0 0-.74.472L9.498 8.435 8.473 6.36a.835.835 0 0 0-.739-.472.837.837 0 0 0-.748.456l-1.762 3.39C4.757 9.3 4.213 8.557 4.213 7.437c0-3.249 3.045-5.191 5.99-5.191 2.715 0 5.054 1.55 6.256 4.145.148.32.47.513.813.49.08-.005.11-.003.125-.003.028.002.049.002.066.002 2.086 0 3.54 1.94 3.54 3.68 0 2.11-1.605 3.763-3.652 3.763-.81 0-1.602-.338-1.998-.651a.815.815 0 0 0-1.028.005 9.116 9.116 0 0 1-5.639 1.965c-3.375 0-5.863-1.94-6.8-3.085a.82.82 0 0 0-1.182-.104.886.886 0 0 0-.1 1.219c.31.379 3.168 3.7 8.082 3.7 2.867 0 4.98-1.106 6.19-1.967a5.305 5.305 0 0 0 2.474.649c2.988 0 5.33-2.414 5.33-5.494 0-2.537-1.978-5.25-4.95-5.403zm39.372 8.902h1.903V7.297h-1.903v6.762zm6.802-6.969c-.713 0-1.35.298-1.738.784h-.02V7.3h-1.903v6.758h1.903v-3.29c0-1.314.69-1.88 1.476-1.88.545 0 1.375.357 1.375 1.686v3.48H66.9V10.43c0-2.273-1.521-3.339-2.997-3.339zm-5.85-2.972c-.615 0-1.112.514-1.112 1.147 0 .634.497 1.148 1.111 1.148s1.112-.514 1.112-1.148c0-.633-.498-1.147-1.112-1.147zm-4.332 6.308l-3.86-5.239c-.398-.54-.778-.706-1.086-.706-.727 0-1.11.453-1.11 1.101v8.474h2.043V8.173l3.86 5.24c.398.54.777.707 1.085.707.729 0 1.11-.453 1.11-1.102V4.545H53.72v5.882zm71.964-2.516h-.021v-.612h-1.902v6.758h1.902V11.01c0-1.28.667-2.01 1.694-2.01h.065V7.09c-.666 0-1.39.277-1.738.82zm-4.267 2.771c0-1.001-.773-1.815-1.724-1.815-.95 0-1.723.814-1.723 1.816 0 1 .773 1.815 1.724 1.815.95 0 1.723-.814 1.723-1.816zm1.77-.002c0 1.978-1.562 3.588-3.493 3.588-1.93 0-3.494-1.61-3.494-3.588 0-1.98 1.564-3.59 3.494-3.59 1.93 0 3.494 1.612 3.494 3.59zm-8.428-5.244h-1.898v1.863h-1.272v1.594h1.272v5.164h1.898V8.892h1.287V7.298h-1.287V5.435zm17.965 4.512c-.192-.579-.729-1.197-1.674-1.197-.669 0-1.324.342-1.62 1.197h3.294zm.53 1.35h-3.87c.235.871.987 1.311 1.639 1.311.66 0 1.156-.236 1.561-.76l1.556.565c-.506 1.028-1.675 1.854-3.1 1.854-1.955 0-3.441-1.76-3.441-3.6 0-1.78 1.452-3.578 3.422-3.578 2.272 0 3.457 1.995 3.485 3.398 0 .641-.42.81-1.252.81zm-21.82.08c0 1.374-1.178 2.962-3.155 2.962-1.562 0-2.744-.99-3.345-1.768l1.744-1.252c.474.495 1.071.866 1.651.866.51 0 .992-.331.992-.808 0-.674-.92-.933-1.922-1.324-1.7-.663-2.225-1.681-2.225-2.882 0-1.445 1.224-2.908 3.108-2.908 1.223 0 2.283.75 2.957 1.605l-1.609 1.162c-.506-.485-.943-.659-1.425-.659-.696 0-.98.433-.98.783 0 .732.972.95 1.927 1.322 1.93.748 2.284 1.858 2.284 2.9h-.001z"
+                      fill="white"
+                      fill-rule="nonzero"
+                      mask="url(#b)"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+              <div class="_item__container nv-ch-bg-lmt:block">
+                <div class="cursor-pointer flex justify-cente items-center">
+                  <a href="region"
+                    ><span
+                      ><img
+                        title="select region"
+                        class="w-[25px] h-[20px]"
+                        src="img/flag.png " /></span
+                  ></a>
+                </div>
+              </div>
+            </div>
+            <div class="close__contaier hidden nv-ch-bg-lmt:hidden">
+              <div class="_inner_ flex justify-cente mr-6">
+                <button
+                  onclick="closeSearchDropDown()"
+                  title="close"
+                  class="_inner_ text-2xl outline-none"
+                >
+                  <i class="fa-sharp fa-solid fa-circle-xmark"></i>
+                </button>
+              </div>
+            </div>
+          </nav>
+          <div
+            class="_features__container nv-ch-bg-lmt:hidden border-b-[1px] border-[#dadada]"
+          >
+            <div class="_inner_ flex justify-center">
+              <div class="_items__container relative">
+                <div
+                  class="_inner_ flex space-x-10 text-sm font-medium text-[#484848] pt-3"
+                >
+                  <div
+                    class="_item__container"
+                    onclick="featureDropDownHandler(
+                      '_nintendo-store-drop-down-arrow_', '_my-nintendo-store__inner')"
+                  >
+                    <button
+                      class="_inner_ flex border-b-[4px] border-[#e60012] text-[#e60012] duration-300 cursor-pointer select-none pb-2 outline-none"
+                    >
+                      <div class="_icon__container mr-2">
+                        <div class="_inner_">
+                          <i class="fa-solid fa-raygun"></i>
+                        </div>
+                      </div>
+                      <div class="_content__container">
+                        <div class="_inner_">My Nintendo Store</div>
+                      </div>
+                      <div class="_arrow__container pl-[12px]">
+                        <div class="_arror__inner">
+                          <i
+                            class="_nintendo-store-drop-down-arrow_ fa-sharp fa-solid fa-chevron-down duration-100"
+                          ></i>
+                        </div>
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class="_item__container group/feature"
+                    onclick="featureDropDownHandler(
+                      '_game-feature-drop-down-arrow_', '_games-feature__parent')"
+                  >
+                    <button
+                      class="_inner_ _games-feature__parent flex group-hover/feature:text-[#e60012] focus:text-[#e60012] duration-300 cursor-pointer select-none outline-none"
+                    >
+                      <div class="_icon__container mr-2">
+                        <div class="_inner_">
+                          <i class="fa-solid fa-raygun"></i>
+                        </div>
+                      </div>
+                      <div class="_content__container">
+                        <div class="_inner_">Games</div>
+                      </div>
+                      <div class="_arrow__container pl-[12px]">
+                        <div class="_arror__inner">
+                          <i
+                            class="_game-feature-drop-down-arrow_ fa-sharp fa-solid fa-chevron-down duration-100"
+                          ></i>
+                        </div>
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class="_item__container group/feature"
+                    onclick="featureDropDownHandler(
+                      '_nintendo-switch-drop-down-arrow_', '_nintendo-switch__parent')"
+                  >
+                    <button
+                      class="_inner_ _nintendo-switch__parent flex group-hover/feature:text-[#e60012] focus:text-[#e60012] duration-300 cursor-pointer select-none outline-none"
+                    >
+                      <div class="_icon__container mr-2">
+                        <div class="_inner_">
+                          <i class="fa-solid fa-raygun"></i>
+                        </div>
+                      </div>
+                      <div class="_content__container">
+                        <div class="_inner_">Nintendo Switch</div>
+                      </div>
+                      <div class="_arrow__container pl-[12px]">
+                        <div class="_arror__inner">
+                          <i
+                            class="_nintendo-switch-drop-down-arrow_ fa-sharp fa-solid fa-chevron-down duration-100"
+                          ></i>
+                        </div>
+                      </div>
+                    </button>
+                  </div>
+                  <div class="_item__container group/feature">
+                    <button
+                      class="_inner_ flex group-hover/feature:text-[#e60012] duration-300 cursor-pointer select-none outline-none"
+                    >
+                      <div class="_icon__container mr-2">
+                        <div class="_inner_">
+                          <i class="fa-solid fa-raygun"></i>
+                        </div>
+                      </div>
+                      <div class="_content__container">
+                        <div class="_inner_ focus:text-[#e60012]">
+                          News & Events
+                        </div>
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class="_item__container group/feature"
+                    onclick="featureDropDownHandler(
+                      '_play-nintendo-drop-down-arrow_', '_play-nintendo__parent')"
+                  >
+                    <button
+                      class="_inner_ _play-nintendo__parent flex group-hover/feature:text-[#e60012] focus:text-[#e60012] duration-300 cursor-pointer select-none outline-none"
+                    >
+                      <div class="_icon__container mr-2">
+                        <div class="_inner_">
+                          <i class="fa-solid fa-raygun"></i>
+                        </div>
+                      </div>
+                      <div class="_content__container">
+                        <div class="_inner_">Play Nintendo</div>
+                      </div>
+                      <div class="_arrow__container pl-[12px]">
+                        <div class="_arror__inner">
+                          <i
+                            class="_play-nintendo-drop-down-arrow_ fa-sharp fa-solid fa-chevron-down duration-100"
+                          ></i>
+                        </div>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+                <div
+                  class="_feature-drop-down__container absolute top-11 hidden bg-red-200"
+                >
+                  feature drop down
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="_advertiser__container">
+            <div
+              class="_inner_ bg-[#f8f8f8] flex justify-center items-center py-2"
+            >
+              <div class="_advertisement__container">
+                <div
+                  class="_inner_ text-[#484848] flex nv-hd-dvd:divide-x divide-[#969696]"
+                >
+                  <div
+                    class="_left_ nv-ch-bg-lmt:hidden text-[17px] font-extralight pr-4"
+                  >
+                    <span class="mr-2 text-[#e60012]">
+                      <i class="fa-solid fa-truck-arrow-right"></i>
+                    </span>
+                    <span
+                      ><span class="font-medium">Free shipping</span> on orders
+                      $50 or more.</span
+                    >
+                    <span
+                      class="text-sm font-default underline underline-offset-1"
+                      ><a href="/apply-restriction" title=""
+                        >Restrictions apply</a
+                      ></span
+                    >.
+                  </div>
+                  <div class="_right_ text-[17px] font-extralight pl-4">
+                    <span class="mr-2 text-[#e60012]">
+                      <i class="fa-sharp-duotone fa-solid fa-coin"></i>
+                    </span>
+                    <span>
+                      Earn
+                      <span class="font-medium underline underline-offset-1">
+                        <a href="/nintendo-coins">My Nintendo Points</a>
+                      </span>
+                      on digital games
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="_middle__container relative h-[610px] w-full bg-[#d6f0fa] flex justify-center"
+      >
+        <div class="_inner_ absolute top-6 max-w-[1200px] px-2">
+          <div class="swiper w-full h-[500px]">
+            <div class="swiper-wrapper _games__container"></div>
+            <div
+              class="swiper-button-prev select-none outline-none rotate-90"
+            ></div>
+            <div
+              class="swiper-button-next select-none outline-none rotate-90"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="assets/js/index.js"></script>
+  </body>
+</html>
